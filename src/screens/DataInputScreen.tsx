@@ -1,46 +1,34 @@
 
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert } from 'react-native';
+import { View, TextInput, Button } from 'react-native';
 import { DataInputRequest } from '../types/UserTypes';
-import { dataInputApi } from '../apis/DataInputApi';
+import { DataInputApi } from '../apis/DataInputApi';
 
 const DataInputScreen: React.FC = () => {
-  const [firstName, setFirstName] = useState<string>('');
-  const [lastName, setLastName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
 
   const handleDataInput = async () => {
+    const requestData: DataInputRequest = {
+      user: {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+      },
+    };
+
     try {
-      const requestData: DataInputRequest = {
-        user: {
-          userId: '',
-          firstName,
-          lastName,
-          email,
-          phone,
-          address,
-        },
-      };
-
-      // Make API call to submit data input
-      const response = await dataInputApi(requestData);
-
-      // Handle success response
-      // Display confirmation message to the user
-      Alert.alert('Success', 'Data input submitted successfully');
-
-      // Reset form fields
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
+      const response = await DataInputApi.dataInput(requestData);
+      console.log('Data input successful:', response);
+      // Add any success handling logic here
     } catch (error) {
-      // Handle error response
-      // Display error message to the user
-      Alert.alert('Error', 'Failed to submit data input');
+      console.error('Data input failed:', error);
+      // Add any error handling logic here
     }
   };
 
