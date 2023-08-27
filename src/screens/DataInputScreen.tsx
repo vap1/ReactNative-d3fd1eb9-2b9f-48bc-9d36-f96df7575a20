@@ -5,11 +5,11 @@ import { DataInputRequest } from '../types/UserTypes';
 import { dataInputApi } from '../apis/DataInputApi';
 
 const DataInputScreen: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [address, setAddress] = useState<string>('');
 
   const handleDataInput = async () => {
     try {
