@@ -5,9 +5,6 @@ export const search = async (keyword: string): Promise<SearchResponse> => {
   try {
     const response = await fetch(`/search/${keyword}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     });
 
     if (!response.ok) {
@@ -17,6 +14,6 @@ export const search = async (keyword: string): Promise<SearchResponse> => {
     const data: SearchResponse = await response.json();
     return data;
   } catch (error) {
-    throw new Error(`Search API error: ${error.message}`);
+    throw new Error(`Search request failed: ${error.message}`);
   }
 };
