@@ -15,6 +15,7 @@ const DataInputScreen: React.FC = () => {
     try {
       const requestData: DataInputRequest = {
         user: {
+          userId: '',
           firstName,
           lastName,
           email,
