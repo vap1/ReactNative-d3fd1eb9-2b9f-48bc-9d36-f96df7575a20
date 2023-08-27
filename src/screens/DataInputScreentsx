@@ -23,21 +23,12 @@ const DataInputScreen: React.FC = () => {
         },
       };
 
-      // Make API call to submit data input
       const response = await DataInputApi.dataInput(requestData);
-
       // Handle success response
-      Alert.alert('Success', 'Data input submitted successfully');
-
-      // Reset form fields
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
+      Alert.alert('Success', 'Data input successful');
     } catch (error) {
-      // Handle error response
-      Alert.alert('Error', 'Failed to submit data input');
+      // Handle error
+      Alert.alert('Error', 'Failed to input data');
     }
   };
 
